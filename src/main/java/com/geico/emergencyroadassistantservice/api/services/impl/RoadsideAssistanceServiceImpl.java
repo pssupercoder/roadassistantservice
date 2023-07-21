@@ -46,13 +46,17 @@ public class RoadsideAssistanceServiceImpl implements RoadsideAssistanceService{
 		if(assitantGeolocation!=null) {
 			
 			assitantGeolocation.setAssistant(assistant);
-			assitantGeolocation.setGeolocation(assistantLocation);
+			
+			assitantGeolocation.setLatitude(assistantLocation.getLatitude());
+			assitantGeolocation.setLongitude(assistantLocation.getLongitude());
+			
 			assistantGeoLocationRepository.save(assitantGeolocation);
 		}
 		else {
 			assitantGeolocation=new AssitantGeolocation();
 			assitantGeolocation.setAssistant(assistant);
-			assitantGeolocation.setGeolocation(assistantLocation);
+			assitantGeolocation.setLatitude(assistantLocation.getLatitude());
+			assitantGeolocation.setLongitude(assistantLocation.getLongitude());
 			assistantGeoLocationRepository.save(assitantGeolocation);
 		}
 		
@@ -73,7 +77,7 @@ public class RoadsideAssistanceServiceImpl implements RoadsideAssistanceService{
 		List<AssitantGeolocation> geoData = assitantGeolocationList.get();
 		
 		List<AssitantGeolocation> distanceCalculationList = geoData.stream()
-			    .peek(f -> f.setDistance(geoDistanceCalculator.findDistance(geolocation.getLatitude().doubleValue(), geolocation.getLongitude().doubleValue(), f.getGeolocation().getLatitude().doubleValue(), f.getGeolocation().getLongitude().doubleValue())))
+			    .peek(f -> f.setDistance(geoDistanceCalculator.findDistance(geolocation.getLatitude().doubleValue(), geolocation.getLongitude().doubleValue(), f.getLatitude().doubleValue(), f.getLongitude().doubleValue())))
 			    .sorted(Comparator.comparing(AssitantGeolocation::getDistance))
 			    .collect(Collectors.toList());
 		
@@ -96,13 +100,20 @@ public class RoadsideAssistanceServiceImpl implements RoadsideAssistanceService{
 	@Override
 	public Optional<Assistant> reserveAssistant(Customer customer, Geolocation customerLocation)throws GeicoException {
 		
+         AssitantGeolocation assitantGeolocation= assistantGeoLocationRepository.findByCustomerId(customer.getId());
+         
+		 if(assitantGeolocation!=null) {
+			 throw  CommonUtilities.createException(ErrorCodes.REGISTRATION_FOUND, ErrorCodes.MSG_REGISTRATION_FOUND);
+			 
+		 }
+		
 		SortedSet<Assistant> assistants= findNearestAssistants(customerLocation, 1);
 		
 		if(assistants.size()==0) {
 			throw  CommonUtilities.createException(ErrorCodes.ASSISTANT_NOT_FOUND, ErrorCodes.MSG_ASSISTANT_NOT_FOUND);
 		}
 		  
-		 AssitantGeolocation assitantGeolocation= assistantGeoLocationRepository.findByAssistantId(assistants.first().getId());
+		 assitantGeolocation= assistantGeoLocationRepository.findByAssistantId(assistants.first().getId());
          
 		 if(assitantGeolocation==null) {
 			 throw  CommonUtilities.createException(ErrorCodes.ASSISTANT_GEOLOCATION_NOT_FOUND, ErrorCodes.MSG_ASSISTANT_GEOLOCATION_NOT_FOUND);
@@ -124,7 +135,7 @@ public class RoadsideAssistanceServiceImpl implements RoadsideAssistanceService{
 		 AssitantGeolocation assitantGeolocation= assistantGeoLocationRepository.findByCustomerId(customer.getId());
          
 		 if(assitantGeolocation==null) {
-			 throw  CommonUtilities.createException(ErrorCodes.ASSISTANT_NOT_FOUND, ErrorCodes.MSG_ASSISTANT_NOT_FOUND);
+			 throw  CommonUtilities.createException(ErrorCodes.REGISTRATION_NOT_FOUND, ErrorCodes.MSG_REGISTRATION_NOT_FOUND);
 			 
 		 }
 		assitantGeolocation.setCustomer(null);

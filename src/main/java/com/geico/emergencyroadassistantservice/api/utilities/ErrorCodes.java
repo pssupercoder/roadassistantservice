@@ -8,7 +8,9 @@ public class ErrorCodes {
 	public final static int GEOLOCATION_NOT_FOUND= 4;
 	
 	public final static int INVALID_INPUT= 5;
-
+	public final static int REGISTRATION_NOT_FOUND= 6;
+	public final static int REGISTRATION_FOUND= 7;
+	
 	public final static String MSG_GEICO_SUPPROT ="Please contact geico support team.";
 	
 	
@@ -16,6 +18,8 @@ public class ErrorCodes {
 	public final static String MSG_CUSOTMER_NOT_FOUND= "Customer not found in system.";
 	public final static String MSG_ASSISTANT_GEOLOCATION_NOT_FOUND= "Assistant geo location not found in system.";
 	public final static String MSG_GEOLOCATION_NOT_FOUND= "Geolocation not found in system.";
+	public final static String MSG_REGISTRATION_NOT_FOUND= "Registration not found in System.";
+	public final static String MSG_REGISTRATION_FOUND= "Registration found in System.";
 	
 	public final static String MSG_EMPTY_GEOLOCATION_LIST= "Geolocation list is empty.";
 	public final static String MSG_INVALID_CUSTOMER= "Customer data is null.";

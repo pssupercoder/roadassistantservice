@@ -15,7 +15,6 @@ import com.geico.emergencyroadassistantservice.api.db.entities.Customer;
 import com.geico.emergencyroadassistantservice.api.db.entities.Geolocation;
 import com.geico.emergencyroadassistantservice.api.db.repositories.AssistantRepository;
 import com.geico.emergencyroadassistantservice.api.db.repositories.CustomerRepository;
-import com.geico.emergencyroadassistantservice.api.db.repositories.GeolocationRepository;
 import com.geico.emergencyroadassistantservice.api.exceptions.GeicoException;
 import com.geico.emergencyroadassistantservice.api.services.RoadsideAssistanceService;
 import com.geico.emergencyroadassistantservice.api.services.RoadsideAssistanceServiceOrch;
@@ -33,8 +32,6 @@ public class RoadsideAssistanceServiceOrchImpl implements RoadsideAssistanceServ
 	@Autowired
 	private RoadsideAssistanceService roadsideAssistanceService;
 	
-	@Autowired
-	private GeolocationRepository geolocationRepository;
 	
 	@Autowired
 	private CustomerRepository customerRepository;
@@ -47,12 +44,7 @@ public class RoadsideAssistanceServiceOrchImpl implements RoadsideAssistanceServ
 			throw  CommonUtilities.createException(ErrorCodes.ASSISTANT_NOT_FOUND, ErrorCodes.MSG_ASSISTANT_NOT_FOUND);
 		}
 		
-		Geolocation geolocation= geolocationRepository.findByLatitudeAndLongitude(assistantLocation.getLatitude(),assistantLocation.getLongitude());
-		if(geolocation==null) {
-			throw CommonUtilities.createException(ErrorCodes.GEOLOCATION_NOT_FOUND, ErrorCodes.MSG_GEOLOCATION_NOT_FOUND);
-		}
-		
-		roadsideAssistanceService.updateAssistantLocation(assistant, geolocation);
+		roadsideAssistanceService.updateAssistantLocation(assistant, assistantLocation);
 		
 	}
 
@@ -75,7 +67,7 @@ public class RoadsideAssistanceServiceOrchImpl implements RoadsideAssistanceServ
 	}
 
 	
-	public void releaseAssistant(String customerGuid, String assistantGuid)throws GeicoException {
+	public void releaseAssistant(String customerGuid)throws GeicoException {
 		
 		Customer customer= customerRepository.findByGuid(customerGuid);
         
@@ -83,12 +75,7 @@ public class RoadsideAssistanceServiceOrchImpl implements RoadsideAssistanceServ
 			throw  CommonUtilities.createException(ErrorCodes.CUSTOMER_NOT_FOUND, ErrorCodes.MSG_CUSOTMER_NOT_FOUND);
 		}
         
-        Assistant assistant= assistantRepository.findByGuid(assistantGuid);
-        if(assistant==null) {
-			throw  CommonUtilities.createException(ErrorCodes.ASSISTANT_NOT_FOUND, ErrorCodes.MSG_ASSISTANT_NOT_FOUND);
-		}
-        
-		roadsideAssistanceService.releaseAssistant(customer, assistant);
+        roadsideAssistanceService.releaseAssistant(customer, null);
 		
 	}
 	

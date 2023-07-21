@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "5e84729f-537b-4498-b107-b6ac4bbec612",
+		"_postman_id": "dfa1a9b4-137b-4cf9-af07-fa773c2f62bb",
 		"name": "EmergencyAssistantService",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -28,7 +28,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"firstName\": \"Assistant2FirstName\",\r\n    \"lastName\": \"Assistant2LastName\"\r\n   \r\n}"
+					"raw": "{\r\n    \"firstName\": \"Assistant3FirstName\",\r\n    \"lastName\": \"Assistant3LastName\"\r\n   \r\n}"
 				},
 				"url": {
 					"raw": "http://localhost:8090/v1/assistants",
@@ -172,46 +172,6 @@
 			"response": []
 		},
 		{
-			"name": "Create Geolocations",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkdlaWNvIFRlc3QiLCJpYXQiOjE1MTYyMzkwMjIsImV4cCI6MTkxMDgyNzE1M30.i0yLO8CFycE_Pa3cI1xq1MR7mU527JgOBhAKv--p1kE",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "default"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "[{\r\n    \"latitude\": 33.032313,\r\n    \"longitude\": -117.085730\r\n},\r\n{\r\n    \"latitude\": 33.031256,\r\n    \"longitude\": -117.085231\r\n},\r\n{\r\n    \"latitude\": 33.033385,\r\n    \"longitude\": -117.086430\r\n}]"
-				},
-				"url": {
-					"raw": "http://localhost:8090/v1/geolocations",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8090",
-					"path": [
-						"v1",
-						"geolocations"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "Update Assistant Location",
 			"request": {
 				"auth": {
@@ -234,10 +194,10 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"latitude\": 33.033385,\r\n    \"longitude\": -117.086430\r\n}"
+					"raw": "{\r\n     \"latitude\": 33.032313,\r\n    \"longitude\": -117.085730\r\n}"
 				},
 				"url": {
-					"raw": "http://localhost:8090/v1/assistants/1e5eff6a-17d0-4344-81ac-c75339ab10d3/location",
+					"raw": "http://localhost:8090/v1/assistants/a4d670d9-9cf1-452a-9349-ea9d2cfcf43d/location",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -246,7 +206,7 @@
 					"path": [
 						"v1",
 						"assistants",
-						"1e5eff6a-17d0-4344-81ac-c75339ab10d3",
+						"a4d670d9-9cf1-452a-9349-ea9d2cfcf43d",
 						"location"
 					]
 				}
@@ -279,7 +239,7 @@
 					"raw": "{\r\n    \"latitude\": 33.033385,\r\n    \"longitude\": -117.086430\r\n}"
 				},
 				"url": {
-					"raw": "http://localhost:8090/v1/customers/2bda28cf-f577-4426-938f-2f4a47dca12a/reserveAssistant",
+					"raw": "http://localhost:8090/v1/customers/dc222494-a7a7-4d53-991f-86e904fd1c31/reserveAssistant",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -288,7 +248,7 @@
 					"path": [
 						"v1",
 						"customers",
-						"2bda28cf-f577-4426-938f-2f4a47dca12a",
+						"dc222494-a7a7-4d53-991f-86e904fd1c31",
 						"reserveAssistant"
 					]
 				}
@@ -321,7 +281,7 @@
 					"raw": "{\r\n    \"latitude\": 23.90,\r\n    \"longitude\": 23.90\r\n}"
 				},
 				"url": {
-					"raw": "http://localhost:8090/v1/customers/2bda28cf-f577-4426-938f-2f4a47dca12a/assistant/1e5eff6a-17d0-4344-81ac-c75339ab10d3/releaseAssistant",
+					"raw": "http://localhost:8090/v1/customers/dc222494-a7a7-4d53-991f-86e904fd1c31/releaseAssistant",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -330,9 +290,7 @@
 					"path": [
 						"v1",
 						"customers",
-						"2bda28cf-f577-4426-938f-2f4a47dca12a",
-						"assistant",
-						"1e5eff6a-17d0-4344-81ac-c75339ab10d3",
+						"dc222494-a7a7-4d53-991f-86e904fd1c31",
 						"releaseAssistant"
 					]
 				}

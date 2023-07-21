@@ -18,6 +18,6 @@ public interface RoadsideAssistanceServiceOrch {
 	public Optional<Assistant> reserveAssistant(String customerGuid, Geolocation customerLocation) throws GeicoException;
 
 	
-	public void releaseAssistant(String customerGuid, String assistantGuid) throws GeicoException ;
+	public void releaseAssistant(String customerGuid) throws GeicoException ;
 	
 }

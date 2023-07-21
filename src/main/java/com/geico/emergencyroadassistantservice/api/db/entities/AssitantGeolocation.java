@@ -1,10 +1,13 @@
 
 package com.geico.emergencyroadassistantservice.api.db.entities;
 
+import java.math.BigDecimal;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -27,15 +30,16 @@ public class AssitantGeolocation {
     @JoinColumn(name = "assistant_id")
 	private Assistant assistant;
 	
-	@JsonIgnore
-	@OneToOne
-    @JoinColumn(name = "geolocation_id")
-	private Geolocation geolocation;
-
+	@Column(name = "latitude", columnDefinition="Numeric(10,6)" )
+	private BigDecimal latitude;
+	
+	@Column(name = "longitude", columnDefinition="Numeric(10,6)")
+	private BigDecimal longitude;
 	
 	@OneToOne
     @JoinColumn(name = "customer_id")
 	private Customer customer;
+	
 	
 	@Transient
 	@JsonIgnore
@@ -49,12 +53,22 @@ public class AssitantGeolocation {
 		this.assistant = assistant;
 	}
 
-	public Geolocation getGeolocation() {
-		return geolocation;
+	
+
+	public BigDecimal getLatitude() {
+		return latitude;
 	}
 
-	public void setGeolocation(Geolocation geolocation) {
-		this.geolocation = geolocation;
+	public void setLatitude(BigDecimal latitude) {
+		this.latitude = latitude;
+	}
+
+	public BigDecimal getLongitude() {
+		return longitude;
+	}
+
+	public void setLongitude(BigDecimal longitude) {
+		this.longitude = longitude;
 	}
 
 	public Customer getCustomer() {
@@ -75,8 +89,8 @@ public class AssitantGeolocation {
 
 	@Override
 	public String toString() {
-		return "AssitantGeolocation [id=" + id + ", assistant=" + assistant + ", geolocation=" + geolocation
-				+ ", customer=" + customer + ", distance=" + distance + "]";
+		return "AssitantGeolocation [id=" + id + ", assistant=" + assistant + ", latitude=" + latitude + ", longitude="
+				+ longitude + ", customer=" + customer + ", distance=" + distance + "]";
 	}
 
 	

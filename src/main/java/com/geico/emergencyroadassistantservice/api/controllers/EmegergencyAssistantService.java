@@ -28,7 +28,6 @@ import com.geico.emergencyroadassistantservice.api.db.entities.Geolocation;
 import com.geico.emergencyroadassistantservice.api.db.repositories.AssistantGeoLocationRepository;
 import com.geico.emergencyroadassistantservice.api.db.repositories.AssistantRepository;
 import com.geico.emergencyroadassistantservice.api.db.repositories.CustomerRepository;
-import com.geico.emergencyroadassistantservice.api.db.repositories.GeolocationRepository;
 import com.geico.emergencyroadassistantservice.api.exceptions.GeicoException;
 import com.geico.emergencyroadassistantservice.api.services.RoadsideAssistanceServiceOrch;
 import com.geico.emergencyroadassistantservice.api.utilities.CommonUtilities;
@@ -47,9 +46,6 @@ public class EmegergencyAssistantService {
 	@Autowired
 	private AssistantRepository assistantRepository;
 	
-	@Autowired
-	private GeolocationRepository geolocationRepository;
-
 	@Autowired
 	private RoadsideAssistanceServiceOrch roadsideAssistanceServiceOrch;
 	
@@ -88,16 +84,14 @@ public class EmegergencyAssistantService {
 			
 	}
 	
-	@PostMapping(value = "v1/customers/{customerGuid}/assistant/{assistantGuid}/releaseAssistant", consumes = {MediaType.APPLICATION_JSON_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE})
-	public ResponseEntity<String> releaseAssistantForCustomer(@PathVariable("customerGuid") String customerGuid, @PathVariable("assistantGuid") String assistantGuid) throws GeicoException{
+	@PostMapping(value = "v1/customers/{customerGuid}/releaseAssistant", consumes = {MediaType.APPLICATION_JSON_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE})
+	public ResponseEntity<String> releaseAssistantForCustomer(@PathVariable("customerGuid") String customerGuid) throws GeicoException{
 		
 		if(StringUtils.isBlank(customerGuid)) {
 			throw CommonUtilities.createException(ErrorCodes.INVALID_INPUT, ErrorCodes.MSG_INVALID_CUSTOMER_ID);
 		}
-		if(StringUtils.isBlank(assistantGuid)) {
-			throw CommonUtilities.createException(ErrorCodes.INVALID_INPUT, ErrorCodes.MSG_INVALID_ASSISTANT_ID);
-		}
-		roadsideAssistanceServiceOrch.releaseAssistant(customerGuid, assistantGuid);
+		
+		roadsideAssistanceServiceOrch.releaseAssistant(customerGuid);
 		
 		return  new ResponseEntity<>(HttpStatus.OK);
 			
@@ -154,21 +148,6 @@ public class EmegergencyAssistantService {
 		return new ResponseEntity<>(newCustomer.getGuid(), HttpStatus.CREATED);
 			
 	}
-	
-	@PostMapping(value = "v1/geolocations", consumes = {MediaType.APPLICATION_JSON_VALUE})
-	public ResponseEntity<String> createGeolocation(@RequestBody List<Geolocation> geoLocation) throws GeicoException{
-		
-
-		if(geoLocation==null || geoLocation.size()==0) {
-			throw CommonUtilities.createException(ErrorCodes.INVALID_INPUT, ErrorCodes.MSG_EMPTY_GEOLOCATION_LIST);
-		}
-		
-		
-		geolocationRepository.saveAll(geoLocation);
-			
-		return new ResponseEntity<>(HttpStatus.CREATED);
-	}
-	
 	
 	
 	@GetMapping(value = "v1/reservations", produces = {MediaType.APPLICATION_JSON_VALUE})

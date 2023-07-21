@@ -27,7 +27,9 @@ public class GeicoERASExceptionHandler extends ResponseEntityExceptionHandler {
 			if(exception.getErrorCode()==ErrorCodes.ASSISTANT_NOT_FOUND
 					|| exception.getErrorCode()==ErrorCodes.CUSTOMER_NOT_FOUND
 					|| exception.getErrorCode()==ErrorCodes.ASSISTANT_GEOLOCATION_NOT_FOUND
-					|| exception.getErrorCode()==ErrorCodes.GEOLOCATION_NOT_FOUND) {
+					|| exception.getErrorCode()==ErrorCodes.GEOLOCATION_NOT_FOUND
+							|| exception.getErrorCode()==ErrorCodes.REGISTRATION_FOUND
+							) {
 				
 				errorMessageBody=exception.getErrorMessage();
 				errorHttpStatus=HttpStatus.BAD_REQUEST;
