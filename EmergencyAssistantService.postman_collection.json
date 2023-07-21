@@ -1,0 +1,436 @@
+{
+	"info": {
+		"_postman_id": "5e84729f-537b-4498-b107-b6ac4bbec612",
+		"name": "EmergencyAssistantService",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Add Assistant",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkdlaWNvIFRlc3QiLCJpYXQiOjE1MTYyMzkwMjIsImV4cCI6MTkxMDgyNzE1M30.i0yLO8CFycE_Pa3cI1xq1MR7mU527JgOBhAKv--p1kE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"Assistant2FirstName\",\r\n    \"lastName\": \"Assistant2LastName\"\r\n   \r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8090/v1/assistants",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"v1",
+						"assistants"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Customer",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkdlaWNvIFRlc3QiLCJpYXQiOjE1MTYyMzkwMjIsImV4cCI6MTkxMDgyNzE1M30.i0yLO8CFycE_Pa3cI1xq1MR7mU527JgOBhAKv--p1kE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"w\",\r\n    \"lastName\": \"Bauer\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8090/v1/customers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"v1",
+						"customers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Customers",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkdlaWNvIFRlc3QiLCJpYXQiOjE1MTYyMzkwMjIsImV4cCI6MTkxMDgyNzE1M30.i0yLO8CFycE_Pa3cI1xq1MR7mU527JgOBhAKv--p1kE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"w\",\r\n    \"lastName\": \"Bauer\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8090/v1/customers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"v1",
+						"customers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Assistants",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkdlaWNvIFRlc3QiLCJpYXQiOjE1MTYyMzkwMjIsImV4cCI6MTkxMDgyNzE1M30.i0yLO8CFycE_Pa3cI1xq1MR7mU527JgOBhAKv--p1kE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"w\",\r\n    \"lastName\": \"Bauer\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8090/v1/assistants",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"v1",
+						"assistants"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Geolocations",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkdlaWNvIFRlc3QiLCJpYXQiOjE1MTYyMzkwMjIsImV4cCI6MTkxMDgyNzE1M30.i0yLO8CFycE_Pa3cI1xq1MR7mU527JgOBhAKv--p1kE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[{\r\n    \"latitude\": 33.032313,\r\n    \"longitude\": -117.085730\r\n},\r\n{\r\n    \"latitude\": 33.031256,\r\n    \"longitude\": -117.085231\r\n},\r\n{\r\n    \"latitude\": 33.033385,\r\n    \"longitude\": -117.086430\r\n}]"
+				},
+				"url": {
+					"raw": "http://localhost:8090/v1/geolocations",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"v1",
+						"geolocations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Assistant Location",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkdlaWNvIFRlc3QiLCJpYXQiOjE1MTYyMzkwMjIsImV4cCI6MTkxMDgyNzE1M30.i0yLO8CFycE_Pa3cI1xq1MR7mU527JgOBhAKv--p1kE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"latitude\": 33.033385,\r\n    \"longitude\": -117.086430\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8090/v1/assistants/1e5eff6a-17d0-4344-81ac-c75339ab10d3/location",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"v1",
+						"assistants",
+						"1e5eff6a-17d0-4344-81ac-c75339ab10d3",
+						"location"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Reserve Assistant For Customer",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkdlaWNvIFRlc3QiLCJpYXQiOjE1MTYyMzkwMjIsImV4cCI6MTkxMDgyNzE1M30.i0yLO8CFycE_Pa3cI1xq1MR7mU527JgOBhAKv--p1kE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"latitude\": 33.033385,\r\n    \"longitude\": -117.086430\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8090/v1/customers/2bda28cf-f577-4426-938f-2f4a47dca12a/reserveAssistant",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"v1",
+						"customers",
+						"2bda28cf-f577-4426-938f-2f4a47dca12a",
+						"reserveAssistant"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Release Assigend Assistant For Customer",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkdlaWNvIFRlc3QiLCJpYXQiOjE1MTYyMzkwMjIsImV4cCI6MTkxMDgyNzE1M30.i0yLO8CFycE_Pa3cI1xq1MR7mU527JgOBhAKv--p1kE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"latitude\": 23.90,\r\n    \"longitude\": 23.90\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8090/v1/customers/2bda28cf-f577-4426-938f-2f4a47dca12a/assistant/1e5eff6a-17d0-4344-81ac-c75339ab10d3/releaseAssistant",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"v1",
+						"customers",
+						"2bda28cf-f577-4426-938f-2f4a47dca12a",
+						"assistant",
+						"1e5eff6a-17d0-4344-81ac-c75339ab10d3",
+						"releaseAssistant"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find NearBy Assistant With Limit Criteria",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkdlaWNvIFRlc3QiLCJpYXQiOjE1MTYyMzkwMjIsImV4cCI6MTkxMDgyNzE1M30.i0yLO8CFycE_Pa3cI1xq1MR7mU527JgOBhAKv--p1kE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"latitude\": 33.033385,\r\n    \"longitude\": -117.086430\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8090/v1/assistants/find?limit=6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"v1",
+						"assistants",
+						"find"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "6"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Reservations",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkdlaWNvIFRlc3QiLCJpYXQiOjE1MTYyMzkwMjIsImV4cCI6MTkxMDgyNzE1M30.i0yLO8CFycE_Pa3cI1xq1MR7mU527JgOBhAKv--p1kE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"latitude\": 23.90,\r\n    \"longitude\": 23.90\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8090/v1/reservations",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"v1",
+						"reservations"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
