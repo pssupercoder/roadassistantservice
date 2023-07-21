@@ -29,42 +29,38 @@ them directly with emergency assistance service trucks that are available and op
  1. Service is handling geo location based on latitude and longitude values for now that can extend based on zip code and address along with within certain distance.
     Note: Follow Test execution steps 
  
- 2. Geocodes are required in database.
-    Note: Follow Test execution steps 
-     
- 3. Assistant and Customer information required in database.
+ 2. Assistant and Customer information required in database.
     Note: Follow Test execution steps 
  
- 4. Later phase a goecode service required to translate geolocation by address 
+ 3. Later phase a goecode service required to translate geolocation by address 
  
- 5. External Error logging service require for later phase with some http response fix.
+ 4. External Error logging service require for later phase with some http response fix.
  
- 6. Execute Add Geocodes API request one time only as need further handling to avoid multiple entries in database.    
+ 5. Execute Add Geocodes API request one time only as need further handling to avoid multiple entries in database.    
  
 
 ----------------------------------------------------------------------------------
 
 # Service Configuration file - Exists in service base folder --> /src/main/resources
 
- Local Profile        -  application-local.yml
- Main Default Profile - application.yml
+ 1. Local Profile        -  application-local.yml
+ 2. Main Default Profile - application.yml
  
 
 # Long lived access token used in api requests as Bearer Token used in postman collection
-
   eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkdlaWNvIFRlc3QiLCJpYXQiOjE1MTYyMzkwMjIsImV4cCI6MTkxMDgyNzE1M30.i0yLO8CFycE_Pa3cI1xq1MR7mU527JgOBhAKv--p1kE
 
 
 # Run Service 
 
- # From eclipse
+  From eclipse
  
     1. get Project from git location & convert in maven project 
     2. Right Click -> Clean Build in eclipse
     3. Right Click ->  Run As -> Run Configurations -- > Right Click "Java Application from left tree --> On right Pane add Main Class --> com.geico.emergencyroadassistantservice.api.EmergencyRoadAssistantApplication
        Click on "Arguments Tab" add vm argument -->  -Dspring.profiles.active=local --> Save and run
  
- # Terminal - From service root folder
+  Terminal - From service root folder
   
   1. mvn install
 
@@ -111,13 +107,24 @@ them directly with emergency assistance service trucks that are available and op
 6. Click on Add Customer --> Click on Send 
    Note: API response return Customer Guid eg. 525283e1-89cb-437f-a3de-dbafe4795002 , copy this value as required later.
 
-7. Click on Create Geolocations --> CLick Send
-   Note: Request will create provided geolocations in database
-
-8. Click on Update Assistant Location --> Replace default Assistant Guid id in url from one copied in step 5   --> Click Send
+7. Click on Update Assistant Location --> Replace default Assistant Guid id in url from one copied in step 5   --> Click Send
    1. eg http://localhost:8080/v1/assistants/60e7b553-0b1e-42d4-8635-0ce3301a5c55/location
-    2. Update geo locations for more than one assistant if require, update body of request by getting useing geocodes for each request and re-execute.
-         
+    2. Update geo locations for more than one assistant if require, update body of request by using geocodes for each request and re-execute.
+
+  Sample Geocodes :
+   {
+    "latitude": 33.032313,
+    "longitude": -117.085730
+   },
+   {
+    "latitude": 33.031256,
+    "longitude": -117.085231
+   },
+   {
+    "latitude": 33.033385,
+    "longitude": -117.086430
+  }
+	 
 9. Lookup nearby Assistant --> Click on Find NearBy Assistant With Limit Criteria --> Click Send
    Note: you will see assistant information in response body according to provided geo codes in request body, limit value can be modified in url
 
@@ -132,7 +139,7 @@ them directly with emergency assistance service trucks that are available and op
    Note: you will not see assistant information in response body as already assigned to customer
 
 13. Click on Release Assigend Assistant For Customer --> Replace default Customer Guid id in url from one copied in step 6 , Replace default Assistant Guid id in url from one copied in step 5 --> Click Send
-    eg. http://localhost:8080/v1/customers/525283e1-89cb-437f-a3de-dbafe4795002/assistant/60e7b553-0b1e-42d4-8635-0ce3301a5c55/releaseAssistant 
+    eg. http://localhost:8080/v1/customers/525283e1-89cb-437f-a3de-dbafe4795002/releaseAssistant 
     Note: you will see 200 success response.
 
 Rerun step 11. and 12 to see Assiatant is back for reservation.
